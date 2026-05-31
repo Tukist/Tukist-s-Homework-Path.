@@ -124,3 +124,4 @@ while True:
         print(f"词 '{query}' 出现在文档: {docs_with_word}")
     else:
         print(f"词 '{query}' 未出现在任何文档中。")
+        

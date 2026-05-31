@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Echo | Singularity Log</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Space+Grotesk:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Space Grotesk', 'Noto Sans SC', 'sans-serif'],
+              mono: ['Space Mono', 'Noto Sans SC', 'monospace'],
+            },
+            colors: {
+              'retro-bg': 'var(--retro-bg)',
+              'retro-panel': 'var(--retro-panel)',
+              'retro-paper': 'var(--retro-paper)',
+              'retro-dark': 'var(--retro-dark)',
+              'retro-ink': 'var(--retro-ink)',
+              'retro-orange': 'var(--retro-orange)',
+              'retro-yellow': 'var(--retro-yellow)',
+              'retro-green': 'var(--retro-green)',
+              'retro-red': 'var(--retro-red)',
+            },
+            boxShadow: {
+              'hard': '4px 4px 0px 0px var(--retro-shadow)',
+              'hard-sm': '2px 2px 0px 0px var(--retro-shadow)',
+              'hard-lg': '8px 8px 0px 0px var(--retro-shadow)',
+            },
+            animation: {
+                'typewriter': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+                'fade-in-up': 'fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                'scale-in': 'scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                'slide-in': 'slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+                typing: {
+                    'from': { width: '0' },
+                    'to': { width: '100%' },
+                },
+                'blink-caret': {
+                    'from, to': { borderColor: 'transparent' },
+                    '50%': { borderColor: 'currentColor' },
+                },
+                fadeInUp: {
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                },
+                scaleIn: {
+                    '0%': { opacity: '0', transform: 'scale(0.95)' },
+                    '100%': { opacity: '1', transform: 'scale(1)' },
+                },
+                slideIn: {
+                    '0%': { opacity: '0', transform: 'translateY(10px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Light Mode (Day Shift) */
+        --retro-bg: #f2f0e4;       /* Cream */
+        --retro-panel: #e8e6d9;    /* Darker Cream */
+        --retro-paper: #ffffff;    /* White */
+        --retro-dark: #1c1917;     /* Charcoal (Borders/Text) */
+        --retro-ink: #292524;      /* Dark Brown/Grey (Body Text) */
+        --retro-orange: #ea580c;   /* Burnt Orange */
+        --retro-yellow: #eab308;   /* Mustard */
+        --retro-green: #65a30d;    /* Olive */
+        --retro-red: #dc2626;      /* Red */
+        --retro-shadow: #1c1917;   /* Hard Shadow Color */
+      }
+
+      .dark {
+        /* Dark Mode (Night Shift) */
+        --retro-bg: #0c0a09;       /* Obsidian */
+        --retro-panel: #1c1917;    /* Charcoal */
+        --retro-paper: #292524;    /* Dark Grey */
+        --retro-dark: #e7e5e4;     /* Bone White (Borders/Text Inverted) */
+        --retro-ink: #d6d3d1;      /* Light Grey (Body Text) */
+        --retro-orange: #f97316;   /* Bright Neon Orange */
+        --retro-yellow: #fbbf24;   /* Bright Amber */
+        --retro-green: #84cc16;    /* Lime Green */
+        --retro-red: #ef4444;      /* Bright Red */
+        --retro-shadow: #000000;   /* Pitch Black Shadow */
+      }
+
+      body {
+        background-color: var(--retro-bg);
+        color: var(--retro-dark);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Hide Default Cursor on Desktop */
+      @media (pointer: fine) {
+        * {
+          cursor: none !important;
+        }
+      }
+
+      /* Retro Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+        background: var(--retro-panel);
+        border-left: 2px solid var(--retro-dark);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--retro-orange); 
+        border: 2px solid var(--retro-dark);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--retro-red); 
+      }
+      
+      /* Background Patterns */
+      .retro-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        background-size: 60px 60px;
+        background-image:
+          linear-gradient(to right, var(--retro-dark) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--retro-dark) 1px, transparent 1px);
+        opacity: 0.05;
+      }
+      
+      .dark .retro-grid {
+        opacity: 0.08;
+        background-image:
+          linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+      }
+
+      .retro-halftone {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        background-image: radial-gradient(var(--retro-orange) 1px, transparent 0);
+        background-size: 24px 24px;
+        opacity: 0.05;
+      }
+      
+      /* CRT Effect Styles */
+      .crt-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .crt-scanline {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          rgba(0,0,0,0.05) 50%,
+          rgba(0,0,0,0.05)
+        );
+        background-size: 100% 4px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+      
+      .crt-vignette {
+        width: 100%;
+        height: 100%;
+        box-shadow: inset 0 0 150px rgba(0,0,0,0.2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+      }
+      
+      .crt-flicker {
+        width: 100%;
+        height: 100%;
+        background: rgba(18, 16, 16, 0.02);
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 15;
+        animation: flicker 0.15s infinite;
+      }
+
+      @keyframes flicker {
+        0% { opacity: 0.01; }
+        50% { opacity: 0.04; }
+        100% { opacity: 0.01; }
+      }
+    </style>
+
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-D8QWuVzt.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+</body>
+</html>
