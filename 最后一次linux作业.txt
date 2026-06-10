@@ -1,0 +1,7 @@
+https://road-of-destiny.onrender.com/
+堂堂发布！
+不过因为云服务器是免费的所以，15分钟没人访问会自动休眠，下次有人打开等半分钟左右唤醒。
+
+如果有些结局打不出来可以看这个。
+项目地址：https://github.com/Tukist/road-of-destiny/
+球球点个star
